@@ -1,0 +1,11 @@
+# Virtual uv workspace root.
+# Declares the two Python packages in this repo as workspace members so
+# they can depend on each other via `{ workspace = true }` in [tool.uv.sources].
+# Co-exists with the JS pnpm workspace (pnpm-workspace.yaml) — separate tools,
+# separate config files.
+
+[tool.uv.workspace]
+members = [
+  "packages/dynamic-workflows-py",
+  "examples/python",
+]

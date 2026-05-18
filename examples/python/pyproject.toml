@@ -1,0 +1,28 @@
+[project]
+name = "dynamic-workflows-python-example"
+version = "0.1.0"
+description = "End-to-end demo of dynamic-workflows in Python."
+requires-python = ">=3.12"
+dependencies = [
+  "dynamic-workflows",
+]
+
+[dependency-groups]
+dev = [
+  "workers-py>=1.9.3",
+]
+
+[tool.uv]
+package = false
+
+# Workspace source. The patched workers-py (pinned below) makes
+# `pywrangler sync` honor [tool.uv.sources] / [tool.uv.workspace] via
+# `uv export`, so no pre-built wheel is needed for the Pyodide vendor step.
+[tool.uv.sources]
+dynamic-workflows = { workspace = true }
+# Use a workers-py fork that patches `pywrangler sync` to honor
+# [tool.uv.sources] and [tool.uv.workspace] via `uv export`.
+# Tracked upstream as <https://github.com/LuisDuarte1/workers-py/tree/honor-uv-workspace-and-sources>.
+# When merged into cloudflare/workers-py, drop these overrides.
+workers-py = { git = "https://github.com/LuisDuarte1/workers-py.git", subdirectory = "packages/cli", rev = "da951b48f65a39a77c826707de375e039f047228" }
+workers-runtime-sdk = { git = "https://github.com/LuisDuarte1/workers-py.git", subdirectory = "packages/runtime-sdk", rev = "da951b48f65a39a77c826707de375e039f047228" }
