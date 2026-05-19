@@ -42,6 +42,8 @@ You stay in charge of *how* tenant code is loaded — Worker Loader, service bin
 npm install @cloudflare/dynamic-workflows
 ```
 
+A Python port is available at [`packages/dynamic-workflows-py`](./packages/dynamic-workflows-py) with an end-to-end demo in [`examples/python`](./examples/python). It's a research preview.
+
 ## Use it
 
 The dispatcher needs three things: re-export `DynamicWorkflowBinding`, hand each tenant a wrapped binding, and register a `WorkflowEntrypoint` that knows how to load tenant code.

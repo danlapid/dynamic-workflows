@@ -1,0 +1,36 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "dynamic-workflows"
+version = "0.1.0"
+description = "Python port of @cloudflare/dynamic-workflows — multi-tenant workflow dispatcher for Cloudflare Dynamic Workers."
+readme = "README.md"
+requires-python = ">=3.12"
+license = { text = "MIT" }
+authors = [{ name = "dynamic-workflows contributors" }]
+keywords = ["cloudflare", "workers", "workflows", "dynamic-workers"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+
+[project.urls]
+Homepage = "https://github.com/danlapid/dynamic-workflows"
+Source = "https://github.com/danlapid/dynamic-workflows"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/dynamic_workflows"]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.0",
+  "pytest-asyncio>=0.24",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"

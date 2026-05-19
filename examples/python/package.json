@@ -1,0 +1,7 @@
+{
+  "name": "dynamic-workflows-python-example",
+  "private": true,
+  "devDependencies": {
+    "wrangler": "4.83.0"
+  }
+}

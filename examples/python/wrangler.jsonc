@@ -1,0 +1,25 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dynamic-workflows-python-example",
+  "main": "src/entry.py",
+  "compatibility_date": "2026-01-28",
+  "compatibility_flags": [
+    "python_workers",
+    "python_workflows",
+    "experimental"
+  ],
+  // `python_no_global_handlers` is the default as of 2025-08-14 (our compat
+  // date is later) and `experimental` is implicit on the workflows internal
+  // service. The patched workers-py fork pinned in pyproject.toml feeds the
+  // experimental flag through via Worker Loader's `allowExperimental`.
+  "workflows": [
+    {
+      "name": "dynamic",
+      "binding": "WORKFLOWS",
+      "class_name": "DynamicWorkflow"
+    }
+  ],
+  "worker_loaders": [
+    { "binding": "LOADER" }
+  ]
+}
